@@ -4,20 +4,23 @@ var hours = ['6:00', '7:00', '8:00', '9:00', '10:00', '11:00', '12:00', '13:00',
 var cookieArray = [];
 
 //Constructor Function for the cookie shops
-function CookieShop(minCustomers, maxCustomers, avgCookie, hours) {
+function CookieShop(name, minCustomers, maxCustomers, avgCookie, hours) {
+  this.name = name;
   this.minCustomers = minCustomers;
   this.maxCustomers = maxCustomers;
   this.avgCookie = avgCookie;
   this.hours = hours;
+
   // this.randomNum = randomNum;
 }
 
 //Creates all locations with information
-var firstAndPike = new CookieShop(23, 65, 6.3, hours);
-var seaTacAirport = new CookieShop(3, 24, 1.2, hours);
-var seattleCenter = new CookieShop(11, 38, 3.7, hours);
-var capitolHill = new CookieShop(20, 38, 2.3, hours);
-var aiki = new CookieShop(2, 16, 4.6, hours);
+var firstAndPike = new CookieShop('firstAndPike', 23, 65, 6.3, hours);
+var seaTacAirport = new CookieShop('seaTacAirport', 3, 24, 1.2, hours);
+var seattleCenter = new CookieShop('seattleCenter', 11, 38, 3.7, hours);
+var capitolHill = new CookieShop('capitolHill', 20, 38, 2.3, hours);
+var aiki = new CookieShop('aiki', 2, 16, 4.6, hours);
+
 // console.log(aiki.hours);
 // console.log(aiki.maxCustomers);
 // console.log(aiki.minCustomers);
@@ -100,13 +103,26 @@ CookieShop.prototype.finalOutput = function (obj) {
 
 };
 
-console.log(aiki.finalOutput(aiki));
+function tableHeadCreator() {
+  var thead = document.getElementById('tablehead');
+  var th = document.createElement('th');
+  thead.appendChild('th');
+  for (var i = 0; i < hours.length; i++) {
+    th = document.createElement('th');
+    th.textContent = hours[i];
+    thead.appendChild('th');
+  }
+};
 
-// finalOutput(firstAndPike);
-// finalOutput(seaTacAirport);
-// finalOutput(seattleCenter);
-// finalOutput(capitolHill);
-// finalOutput(aiki);
+tableHeadCreator();
+
+
+// console.log(aiki.finalOutput(aiki));
+// firstAndPike.finalOutput(firstAndPike);
+// seaTacAirport.finalOutput(seaTacAirport);
+// seattleCenter.finalOutput(seattleCenter);
+// capitolHill.finalOutput(capitolHill);
+// aiki.finalOutput(aiki);
 
 // console.log(finalOutput(firstAndPike));
 
