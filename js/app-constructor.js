@@ -77,27 +77,30 @@ CookieShop.prototype.sum = function (obj) {
     // console.log(total);
   }
 
-  console.log(total);
+  // console.log(total);
   return total;
 };
 
-console.log(aiki.sum(aiki));
+// console.log(aiki.sum(aiki));
 
-function finalOutput(obj) {
-  var results = cookieArrayCreator(obj);
-  var finalSum = sum(obj);
 
-  for (var i = 0; i < hours.length; i++) {
+CookieShop.prototype.finalOutput = function (obj) {
+  var results = obj.cookieArrayCreator(obj);
+  var finalSum = obj.sum(obj);
+
+  for (var i = 0; i < this.hours.length; i++) {
     results[i] = `${hours[i]}: ${results[i]} cookies`;
-    // console.log(results[i]);
+    console.log(results[i]);
   }
 
   finalSum = `Total: ${finalSum} cookies`;
-  // console.log(finalSum);
-  // console.table(results + finalSum);
+  console.log(finalSum);
+  console.table(results + finalSum);
   return results + finalSum;
 
 };
+
+console.log(aiki.finalOutput(aiki));
 
 // finalOutput(firstAndPike);
 // finalOutput(seaTacAirport);
