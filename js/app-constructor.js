@@ -54,7 +54,7 @@ CookieShop.prototype.cookiesPerHour = function (obj) {
 CookieShop.prototype.cookieArrayCreator = function (obj) {
   for (var i = 0; i < this.hours.length; i++)
   {
-    var amount = obj.cookiePerHour(obj);
+    var amount = obj.cookiesPerHour(obj);
     console.log(amount);
     var cookieSum = 0;
     cookieSum = cookieSum + amount;
