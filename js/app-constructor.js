@@ -55,32 +55,33 @@ CookieShop.prototype.cookieArrayCreator = function (obj) {
   for (var i = 0; i < this.hours.length; i++)
   {
     var amount = obj.cookiesPerHour(obj);
-    console.log(amount);
+    // console.log(amount);
     var cookieSum = 0;
     cookieSum = cookieSum + amount;
-    console.log(cookieSum);
+    // console.log(cookieSum);
     cookieArray.push(cookieSum);
-    console.log(cookieArray[i]);
+    // console.log(cookieArray[i]);
   }
 
-  console.table(cookieArray);
+  // console.table(cookieArray);
   return cookieArray;
 };
 
-console.log(aiki.cookieArrayCreator(aiki));
+// console.log(aiki.cookieArrayCreator(aiki));
 
-function sum(obj) {
-  var temp = cookieArrayCreator(obj);
+CookieShop.prototype.sum = function (obj) {
+  var temp = obj.cookieArrayCreator(obj);
   var total = 0;
-  for (var i = 0; i < hours.length; i++) {
+  for (var i = 0; i < this.hours.length; i++) {
     total = temp[i] + total;
     // console.log(total);
   }
 
-  // console.log(total);
+  console.log(total);
   return total;
-  // return total;
 };
+
+console.log(aiki.sum(aiki));
 
 function finalOutput(obj) {
   var results = cookieArrayCreator(obj);
