@@ -125,7 +125,7 @@ function tableHeadCreator() {
 
   tHead.appendChild(finalElement);
   console.log(' final element inserted');
-  // tHead.textContent = ' Daily Totals';
+  finalElement.textContent = ' Daily Totals';
 
 };
 
