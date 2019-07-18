@@ -6,22 +6,23 @@ var cookieArray = [];
 
 // ______________________FUNCTIONALITY___________________________________________
 //Constructor Function for the cookie shops
-function CookieShop(name, minCustomers, maxCustomers, avgCookie, hours) {
+function CookieShop(name, minCustomers, maxCustomers, avgCookie, hours, array) {
   this.name = name;
   this.minCustomers = minCustomers;
   this.maxCustomers = maxCustomers;
   this.avgCookie = avgCookie;
   this.hours = hours;
+  this.array = array;
 
   // this.randomNum = randomNum;
 }
 
 //Creates all locations with information
-var firstAndPike = new CookieShop('firstAndPike', 23, 65, 6.3, hours);
-var seaTacAirport = new CookieShop('seaTacAirport', 3, 24, 1.2, hours);
-var seattleCenter = new CookieShop('seattleCenter', 11, 38, 3.7, hours);
-var capitolHill = new CookieShop('capitolHill', 20, 38, 2.3, hours);
-var aiki = new CookieShop('aiki', 2, 16, 4.6, hours);
+var firstAndPike = new CookieShop('firstAndPike', 23, 65, 6.3, hours, cookieArray);
+var seaTacAirport = new CookieShop('seaTacAirport', 3, 24, 1.2, hours, cookieArray);
+var seattleCenter = new CookieShop('seattleCenter', 11, 38, 3.7, hours, cookieArray);
+var capitolHill = new CookieShop('capitolHill', 20, 38, 2.3, hours, cookieArray);
+var aiki = new CookieShop('aiki', 2, 16, 4.6, hours, cookieArray);
 
 // console.log(aiki.hours);
 // console.log(aiki.maxCustomers);
@@ -64,12 +65,12 @@ CookieShop.prototype.cookieArrayCreator = function (obj) {
     var cookieSum = 0;
     cookieSum = cookieSum + amount;
     // console.log(cookieSum);
-    cookieArray.push(cookieSum);
-    // console.log(cookieArray[i]);
+    obj.array.push(cookieSum);
+    // console.log(obj.array[i]);
   }
 
-  // console.table(cookieArray);
-  return cookieArray;
+  // console.table(obj.array);
+  return obj.array;
 };
 
 // console.log(aiki.cookieArrayCreator(aiki));
@@ -106,19 +107,73 @@ CookieShop.prototype.finalOutput = function (obj) {
 };
 
 function tableHeadCreator() {
-  var thead = document.getElementById('tablehead');
-  var th = document.createElement('th');
-  thead.appendChild('th');
+  var tHead = document.getElementById('table-head');
+  var tHeadEl = document.createElement('th');
+  tHeadEl.textcontent = '';
+  tHead.appendChild(tHeadEl);
   for (var i = 0; i < hours.length; i++) {
-    th = document.createElement('th');
+    var th = document.createElement('th');
     th.textContent = hours[i];
-    thead.appendChild('th');
+    tHeadEl.appendChild(th);
   }
+
+  th = document.createElement('th');
+  tHead.appendChild(th);
+};
+
+function tableBodyCreator(obj) {
+  obj.cookieArrayCreator(obj);
+  var fill = obj.array;
+  console.log(`array is: ${fill}`);
+  var location = obj.name;
+  var total = 0;
+  var tBody = document.getElementById('table-body');
+  var tBodyEl = document.createElement('tr');
+  console.log('row created');
+  tBodyEl.textcontent = location;
+  console.log(`The location is: ${location}`);
+  tBody.appendChild(tBodyEl);
+  for (var i = 0; i < hours.length; i++) {
+    var tb = document.createElement('td');
+    var fill = obj.array;
+    console.log(`fill is this: ${fill[i]}`);
+    tb.textContent = fill[i];
+    console.log(`fill inserted: ${fill[i]}`);
+
+    total = total + fill[i];
+    console.log(`total calculated to be ${total}`);
+
+    tBodyEl.appendChild(tb);
+    console.log(`child created`);
+
+  }
+
+  var tFinal = document.getElementById('table-body');
+  var tFinalEl = document.createElement('td');
+  console.log('Final cell created');
+  tFinal.textcontent = ` Final:${total}`;
+  console.log(`total: ${total}`);
+  tFinal.appendChild(tFinalEl);
+};
+
+function tableFootCreator() {
+  var thead = document.getElementById('table-foot');
+  var tHeadEl = document.createElement('th');
+  thead.appendChild(tHeadEl);
+  for (var i = 0; i < hours.length; i++) {
+    var th = document.createElement('th');
+    th.textContent = hours[i];
+    tHeadEl.appendChild(th);
+  }
+
+  th = document.createElement('th');
+  thead.appendChild(th);
 };
 
 // ______________________EXECUTABLE___________________________________________
 
 tableHeadCreator();
+tableBodyCreator(aiki);
 
 // console.log(aiki.finalOutput(aiki));
 // firstAndPike.finalOutput(firstAndPike);
