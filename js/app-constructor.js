@@ -19,10 +19,10 @@ function CookieShop(name, minCustomers, maxCustomers, avgCookie, hours, array) {
 }
 
 //Creates all locations with information
-var firstAndPike = new CookieShop('firstAndPike', 23, 65, 6.3, hours, cookieArray);
+var firstAndPike = new CookieShop('firstAndPike', 23, 65, 6.3, hours, []);
 var seaTacAirport = new CookieShop('seaTacAirport', 3, 24, 1.2, hours, []);
-var seattleCenter = new CookieShop('seattleCenter', 11, 38, 3.7, hours, cookieArray);
-var capitolHill = new CookieShop('capitolHill', 20, 38, 2.3, hours, cookieArray);
+var seattleCenter = new CookieShop('seattleCenter', 11, 38, 3.7, hours, []);
+var capitolHill = new CookieShop('capitolHill', 20, 38, 2.3, hours, []);
 var aiki = new CookieShop('aiki', 2, 16, 4.6, hours, []);
 
 // console.log(aiki.hours);
@@ -146,15 +146,15 @@ function tableBodyCreator(obj) {
   // console.log('row created');
   var tFinalEl = document.createElement('td');
   // console.log('Final cell created');
-  //Footer variables
-  var msg = 'Daily Totals';
-  var tFoot = document.getElementById('table-foot');
-  var tFootRow = document.createElement('tr');
-  var totalsRow = document.createElement('td');
-  tFoot.appendChild(tFootRow);
-  tFootRow.appendChild(totalsRow);
-  totalsRow.textContent = msg;
-
+  // //Footer variables
+  // var msg = 'Daily Totals';
+  // var tFoot = document.getElementById('table-foot');
+  // var tFootRow = document.createElement('tr');
+  // var totalsRow = document.createElement('td');
+  // tFoot.appendChild(tFootRow);
+  // tFootRow.appendChild(totalsRow);
+  // totalsRow.textContent = msg;
++
   //Body part of the function
   tBody.appendChild(tBodyEl);
   tBodyEl.appendChild(tLocation);
@@ -181,26 +181,27 @@ function tableBodyCreator(obj) {
   tFinalEl.textContent = total;
   // console.log(`total: ${total}`);
 
-  //Footer part of the Function
-  for (var i = 0; i < hours.length; i++) {
-    var tf = document.createElement('td');
-    // tf.textContent = ;
-    tHeadEl.appendChild(th);
-  }
-
-  th = document.createElement('th');
-  thead.appendChild(th);
-};
-
-function tableFootCreator() {
-
-
+  //   //Footer part of the Function
+  //   for (var i = 0; i < hours.length; i++) {
+  //     var tf = document.createElement('td');
+  //     // tf.textContent = ;
+  //     tHeadEl.appendChild(th);
+  //   }
+  //
+  //   th = document.createElement('th');
+  //   thead.appendChild(th);
+  // };
+  //
+  // function tableFootCreator() {
+  //
+  //
 };
 
 // ______________________EXECUTABLE___________________________________________
 
-// tableHeadCreator();
-// tableBodyCreator(aiki);
+tableHeadCreator();
+tableBodyCreator(aiki);
+tableBodyCreator(seaTacAirport);
 
 // console.log(aiki.finalOutput(aiki));
 // firstAndPike.finalOutput(firstAndPike);
