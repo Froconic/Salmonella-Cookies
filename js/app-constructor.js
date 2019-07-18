@@ -108,17 +108,25 @@ CookieShop.prototype.finalOutput = function (obj) {
 
 function tableHeadCreator() {
   var tHead = document.getElementById('table-head');
-  var tHeadEl = document.createElement('th');
-  tHeadEl.textcontent = '';
-  tHead.appendChild(tHeadEl);
+  var blankElement = document.createElement('th');
+  console.log('element created');
+  var finalElement = document.createElement('th');
+  console.log(' final element created');
+  tHead.appendChild(blankElement);
+  console.log('element inserted');
+  // tHead.textContent = '';
+
   for (var i = 0; i < hours.length; i++) {
+    console.log('I am running');
     var th = document.createElement('th');
     th.textContent = hours[i];
-    tHeadEl.appendChild(th);
+    tHead.appendChild(th);
   }
 
-  th = document.createElement('th');
-  tHead.appendChild(th);
+  tHead.appendChild(finalElement);
+  console.log(' final element inserted');
+  // tHead.textContent = ' Daily Totals';
+
 };
 
 function tableBodyCreator(obj) {
@@ -135,7 +143,7 @@ function tableBodyCreator(obj) {
   tBody.appendChild(tBodyEl);
   for (var i = 0; i < hours.length; i++) {
     var tb = document.createElement('td');
-    var fill = obj.array;
+    fill = obj.array;
     console.log(`fill is this: ${fill[i]}`);
     tb.textContent = fill[i];
     console.log(`fill inserted: ${fill[i]}`);
@@ -148,12 +156,11 @@ function tableBodyCreator(obj) {
 
   }
 
-  var tFinal = document.getElementById('table-body');
-  var tFinalEl = document.createElement('td');
+  tBodyEl = document.createElement('td');
   console.log('Final cell created');
-  tFinal.textcontent = ` Final:${total}`;
+  tBody.textcontent = total;
   console.log(`total: ${total}`);
-  tFinal.appendChild(tFinalEl);
+  tBody.appendChild(tFinalEl);
 };
 
 function tableFootCreator() {
@@ -173,7 +180,7 @@ function tableFootCreator() {
 // ______________________EXECUTABLE___________________________________________
 
 tableHeadCreator();
-tableBodyCreator(aiki);
+// tableBodyCreator(aiki);
 
 // console.log(aiki.finalOutput(aiki));
 // firstAndPike.finalOutput(firstAndPike);
