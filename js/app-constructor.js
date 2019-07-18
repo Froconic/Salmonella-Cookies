@@ -109,23 +109,23 @@ CookieShop.prototype.finalOutput = function (obj) {
 function tableHeadCreator() {
   var tHead = document.getElementById('table-head');
   var blankElement = document.createElement('th');
-  console.log('element created');
+  // console.log('element created');
   var finalElement = document.createElement('th');
-  console.log(' final element created');
+  // console.log(' final element created');
   tHead.appendChild(blankElement);
-  console.log('element inserted');
+  // console.log('element inserted');
   // tHead.textContent = '';
 
   for (var i = 0; i < hours.length; i++) {
-    console.log('I am running');
+    // console.log('I am running');
     var th = document.createElement('th');
     th.textContent = hours[i];
     tHead.appendChild(th);
   }
 
   tHead.appendChild(finalElement);
-  console.log(' final element inserted');
-  finalElement.textContent = ' Daily Totals';
+  // console.log(' final element inserted');
+  finalElement.textContent = 'Daily Totals';
 
 };
 
@@ -137,10 +137,15 @@ function tableBodyCreator(obj) {
   var total = 0;
   var tBody = document.getElementById('table-body');
   var tBodyEl = document.createElement('tr');
+  var tLocation = document.createElement('td');
   console.log('row created');
-  tBodyEl.textcontent = location;
-  console.log(`The location is: ${location}`);
+  var tFinalEl = document.createElement('td');
+  console.log('Final cell created');
   tBody.appendChild(tBodyEl);
+  tBodyEl.appendChild(tLocation);
+  tLocation.textContent = location;
+  console.log(tLocation.textContent);
+  console.log(`The location is: ${location}`);
   for (var i = 0; i < hours.length; i++) {
     var tb = document.createElement('td');
     fill = obj.array;
@@ -155,12 +160,10 @@ function tableBodyCreator(obj) {
     console.log(`child created`);
 
   }
-
-  tBodyEl = document.createElement('td');
-  console.log('Final cell created');
-  tBody.textcontent = total;
+  console.log(`final total: ${total}`);
+  tBodyEl.appendChild(tFinalEl);
+  tFinalEl.textContent = total;
   console.log(`total: ${total}`);
-  tBody.appendChild(tFinalEl);
 };
 
 function tableFootCreator() {
@@ -180,7 +183,7 @@ function tableFootCreator() {
 // ______________________EXECUTABLE___________________________________________
 
 tableHeadCreator();
-// tableBodyCreator(aiki);
+tableBodyCreator(aiki);
 
 // console.log(aiki.finalOutput(aiki));
 // firstAndPike.finalOutput(firstAndPike);
