@@ -50,7 +50,7 @@ var aiki = new CookieShop('aiki', 2, 16, 4.6, hours, []);
 
 // ----------------------Methods-----------------------------------
 // Creates the method for gathering the random amount of customers that hour
-CookieShop.prototype.random = function () {
+CookieShop.prototype.random = function() {
 
   var min = Math.ceil(this.minCustomers);
   var max = Math.floor(this.maxCustomers);
@@ -62,7 +62,7 @@ CookieShop.prototype.random = function () {
 // console.log(aiki.random());
 
 //Calculates the cookies per hour
-CookieShop.prototype.cookiesPerHour = function () {
+CookieShop.prototype.cookiesPerHour = function() {
   var min = this.minCustomers;
   var max = this.maxCustomers;
 
@@ -80,9 +80,8 @@ CookieShop.prototype.cookiesPerHour = function () {
 // console.log(aiki.cookiesPerHour());
 
 //Creates the cookie array
-CookieShop.prototype.cookieArrayCreator = function () {
-  for (var i = 0; i < this.hours.length; i++)
-  {
+CookieShop.prototype.cookieArrayCreator = function() {
+  for (var i = 0; i < this.hours.length; i++) {
     var amount = this.cookiesPerHour();
     // console.log(amount);
     var cookieSum = 0;
@@ -103,7 +102,7 @@ CookieShop.prototype.cookieArrayCreator = function () {
 // console.log(seaTacAirport.array);
 
 // Sums the totla for a locations daily output
-CookieShop.prototype.sum = function () {
+CookieShop.prototype.sum = function() {
   var temp = this.cookieArrayCreator();
   var total = 0;
   for (var i = 0; i < this.hours.length; i++) {
@@ -118,7 +117,7 @@ CookieShop.prototype.sum = function () {
 // console.log(aiki.sum());
 
 //Outputs the message for the lists
-CookieShop.prototype.finalOutput = function () {
+CookieShop.prototype.finalOutput = function() {
   var results = this.cookieArrayCreator();
   var finalSum = this.sum();
 
@@ -137,7 +136,7 @@ CookieShop.prototype.finalOutput = function () {
 // console.log(aiki.finalOutput());
 
 //Renders the table body with the data filled in
-CookieShop.prototype.render = function () {
+CookieShop.prototype.render = function() {
   this.cookieArrayCreator();
   var fill = this.array;
   // console.log(`array is: ${fill}`);
@@ -149,11 +148,15 @@ CookieShop.prototype.render = function () {
   // console.log('row created');
   var tFinalEl = document.createElement('td');
   // console.log('Final cell created');
+
+
   tBody.appendChild(tBodyEl);
   tBodyEl.appendChild(tLocation);
   tLocation.textContent = location;
   // console.log(tLocation.textContent);
   // console.log(`The location is: ${location}`);
+
+
   for (var i = 0; i < hours.length; i++) {
     var tb = document.createElement('td');
     fill = this.array;
@@ -176,6 +179,7 @@ CookieShop.prototype.render = function () {
   tFinalEl.textContent = total;
   // console.log(`total: ${total}`);
   //---------------------------Footer part of the function-----------------------
+  // Footer function variables
   var totalFill = hourlyTotals;
   console.log(`array is: ${totalFill}`);
   var title = 'Hourly Totals';
@@ -186,19 +190,25 @@ CookieShop.prototype.render = function () {
   console.log('row created');
   var tableFooterFinalCell = document.createElement('td');
   console.log('Final cell created');
+
+
   tableFooter.appendChild(tableFooterEl);
   tableFooterEl.appendChild(tableTitle);
   tableTitle.textContent = title;
   console.log(tableTitle.textContent);
   console.log(`The row is: ${title}`);
+
+
   for (var i = 0; i < hours.length; i++) {
     var tf = document.createElement('td');
     console.log(`fill is this: ${totalFill[i]}`);
     tf.textContent = totalFill[i];
     console.log(`fill inserted: ${totalFill[i]}`);
 
+
     massTotal = massTotal + totalFill[i];
     console.log(`total calculated to be ${massTotal}`);
+
 
     hourlyTotals[i] = hourlyTotals[i] + totalFill[i];
     console.log(`Total for ${hours[i]}: is ${hourlyTotals[i]}`);
@@ -213,8 +223,28 @@ CookieShop.prototype.render = function () {
   console.log(`total: ${massTotal}`);
 };
 
-CookieShop.prototype.renderTotals = function () {
+function footerTotals() {
+  var total = 0;
+  
+}
 
+// Test for the render function
+
+// console.log(tableHeadCreator());
+// console.log(aiki.render());
+// console.log(seaTacAirport.render());
+// console.log(tableBodyCreator(seaTacAirport));
+
+CookieShop.prototype.finalRender = function () {
+  var tableBody = document.getElementbyId('table-body');
+  tableBody.textContent(tableBody);
+  hourlyTotals = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+  console.log('total reset');
+
+  for(var i = 0; i < CookieShop.all.length; i++) {
+    CookieShop.all[i].render();
+    console.log(`Curren location: ${CookieShop.all[i].name}`);
+  };
 };
 
 //This constructs the table header
@@ -240,13 +270,6 @@ function tableHeadCreator() {
   finalElement.textContent = 'Daily Totals';
 };
 
-tableHeadCreator();
-
-// Test for the render function
-console.log(
-  aiki.render()sB ,
-  seaTacAirport.render(););
-tableBodyCreator(seaTacAirport);
 
 
 // function tableBodyCreator() {
@@ -283,10 +306,12 @@ tableBodyCreator(seaTacAirport);
 //
 //
 // // ______________________EXECUTABLE___________________________________________
-// //COPY ME ----------------------------------------------------------
-//
-// // -------------------------------------------------------------------
-//
+
+console.log(CookieShop.renderTotals)
+
+
+
+// Test for final Output list
 // // console.log(aiki.finalOutput(aiki));
 // // firstAndPike.finalOutput(firstAndPike);
 // // seaTacAirport.finalOutput(seaTacAirport);
