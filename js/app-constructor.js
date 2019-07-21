@@ -17,10 +17,17 @@ function CookieShop(name, minCustomers, maxCustomers, avgCookie, hours, array) {
   this.array = [];
 
   // this.cookiesPerHour();
+  // This adds the new store to the list of locations
+  CookieShop.all.push(this);
 
 
   // this.randomNum = randomNum;
 }
+
+// Create an empty array in order to store all of the locations
+
+CookieShop.all = [];
+
 //---------------Inizialization-------------------------------
 //Creates all locations with information
 var firstAndPike = new CookieShop('firstAndPike', 23, 65, 6.3, hours, []);
@@ -95,7 +102,7 @@ CookieShop.prototype.cookieArrayCreator = function () {
 // console.log(aiki.array);
 // console.log(seaTacAirport.array);
 
-
+// Sums the totla for a locations daily output
 CookieShop.prototype.sum = function () {
   var temp = this.cookieArrayCreator();
   var total = 0;
@@ -110,6 +117,7 @@ CookieShop.prototype.sum = function () {
 
 // console.log(aiki.sum());
 
+//Outputs the message for the lists
 CookieShop.prototype.finalOutput = function () {
   var results = this.cookieArrayCreator();
   var finalSum = this.sum();
@@ -128,46 +136,88 @@ CookieShop.prototype.finalOutput = function () {
 
 // console.log(aiki.finalOutput());
 
+//Renders the table body with the data filled in
 CookieShop.prototype.render = function () {
   this.cookieArrayCreator();
   var fill = this.array;
-  console.log(`array is: ${fill}`);
+  // console.log(`array is: ${fill}`);
   var location = this.name;
   var total = 0;
   var tBody = document.getElementById('table-body');
   var tBodyEl = document.createElement('tr');
   var tLocation = document.createElement('td');
-  console.log('row created');
+  // console.log('row created');
   var tFinalEl = document.createElement('td');
-  console.log('Final cell created');
+  // console.log('Final cell created');
   tBody.appendChild(tBodyEl);
   tBodyEl.appendChild(tLocation);
   tLocation.textContent = location;
-  console.log(tLocation.textContent);
-  console.log(`The location is: ${location}`);
+  // console.log(tLocation.textContent);
+  // console.log(`The location is: ${location}`);
   for (var i = 0; i < hours.length; i++) {
     var tb = document.createElement('td');
     fill = this.array;
-    console.log(`fill is this: ${fill[i]}`);
+    // console.log(`fill is this: ${fill[i]}`);
     tb.textContent = fill[i];
-    console.log(`fill inserted: ${fill[i]}`);
+    // console.log(`fill inserted: ${fill[i]}`);
 
     total = total + fill[i];
-    console.log(`total calculated to be ${total}`);
+    // console.log(`total calculated to be ${total}`);
 
     hourlyTotals[i] = hourlyTotals[i] + fill[i];
-    console.log(`Total for ${hours[i]}: is ${hourlyTotals[i]}`);
+    // console.log(`Total for ${hours[i]}: is ${hourlyTotals[i]}`);
     tBodyEl.appendChild(tb);
+    // console.log(`child created`);
+  }
+
+  // console.log(`final total: ${total}`);
+
+  tBodyEl.appendChild(tFinalEl);
+  tFinalEl.textContent = total;
+  // console.log(`total: ${total}`);
+  //---------------------------Footer part of the function-----------------------
+  var totalFill = hourlyTotals;
+  console.log(`array is: ${totalFill}`);
+  var title = 'Hourly Totals';
+  var massTotal = 0;
+  var tableFooter = document.getElementById('table-foot');
+  var tableFooterEl = document.createElement('tr');
+  var tableTitle = document.createElement('td');
+  console.log('row created');
+  var tableFooterFinalCell = document.createElement('td');
+  console.log('Final cell created');
+  tableFooter.appendChild(tableFooterEl);
+  tableFooterEl.appendChild(tableTitle);
+  tableTitle.textContent = title;
+  console.log(tableTitle.textContent);
+  console.log(`The row is: ${title}`);
+  for (var i = 0; i < hours.length; i++) {
+    var tf = document.createElement('td');
+    console.log(`fill is this: ${totalFill[i]}`);
+    tf.textContent = totalFill[i];
+    console.log(`fill inserted: ${totalFill[i]}`);
+
+    massTotal = massTotal + totalFill[i];
+    console.log(`total calculated to be ${massTotal}`);
+
+    hourlyTotals[i] = hourlyTotals[i] + totalFill[i];
+    console.log(`Total for ${hours[i]}: is ${hourlyTotals[i]}`);
+    tableFooterEl.appendChild(tb);
     console.log(`child created`);
   }
 
   console.log(`final total: ${total}`);
 
-  tBodyEl.appendChild(tFinalEl);
-  tFinalEl.textContent = total;
-  console.log(`total: ${total}`);
+  tableFooterEl.appendChild(tableFooterFinalCell);
+  tableFooterFinalCell.textContent = massTotal;
+  console.log(`total: ${massTotal}`);
 };
 
+CookieShop.prototype.renderTotals = function () {
+
+};
+
+//This constructs the table header
 function tableHeadCreator() {
   var tableHead = document.getElementById('table-head');
   var blankElement = document.createElement('th');
@@ -188,8 +238,16 @@ function tableHeadCreator() {
   tableHead.appendChild(finalElement);
   // console.log(' final element inserted');
   finalElement.textContent = 'Daily Totals';
-
 };
+
+tableHeadCreator();
+
+// Test for the render function
+console.log(
+  aiki.render()sB ,
+  seaTacAirport.render(););
+tableBodyCreator(seaTacAirport);
+
 
 // function tableBodyCreator() {
 //   //Body variables
@@ -227,10 +285,6 @@ function tableHeadCreator() {
 // // ______________________EXECUTABLE___________________________________________
 // //COPY ME ----------------------------------------------------------
 //
-tableHeadCreator();
-aiki.render();
-seaTacAirport.render();
-// tableBodyCreator(seaTacAirport);
 // // -------------------------------------------------------------------
 //
 // // console.log(aiki.finalOutput(aiki));
