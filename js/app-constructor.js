@@ -85,7 +85,7 @@ CookieShop.prototype.cookiesPerHour = function() {
 
 //Creates the cookie array
 CookieShop.prototype.cookieArrayCreator = function() {
-  for (var i = 0; i < this.hours.length; i++) {
+  for (var i = 0; i < hours.length; i++) {
     var amount = this.cookiesPerHour();
     // console.log(amount);
     var cookieSum = 0;
@@ -237,8 +237,8 @@ function footerTotal() {
 };
 
 function footerClear() {
-  var footerRow = document.getElementById("table-footer");
-  footerLocation.innerHTML = '';
+  var footerRow = document.getElementById("table-foot");
+  footerRow.innerHTML = '';
 }
 
 
@@ -295,24 +295,27 @@ function tableHeadCreator() {
 }
 
 // name, minCustomers, maxCustomers, avgCookie, hours, array
-function inputData() {
+function inputData(event) {
   event.preventDefault();
 
-  var locationName = event.target.name.value;
+  var locationName = event.target.locationName.value;
   console.log(locationName);
-  var minimumCustomers = event.target.minCustomers.value;
+  var minimumCustomers = event.target.minimumCustomers.value;
   console.log(minimumCustomers);
-  var maximumCustomers = event.target.maxCustomers.value;
+  var maximumCustomers = event.target.maximumCustomers.value;
   console.log(maximumCustomers);
-  var averageSales = event.target.avgCookies.value;
+  var averageSales = event.target.averageSales.value;
   console.log(averageSales);
   console.log('data collected');
 
   var newShop = new CookieShop(locationName, maximumCustomers, minimumCustomers, averageSales);
   console.log('data input');
 
+  shops.push(newShop);
+  console.log(newShop);
+
 footerClear();
-finalrender();
+finalRender();
 }
 // // ______________________EXECUTABLE___________________________________________
 
