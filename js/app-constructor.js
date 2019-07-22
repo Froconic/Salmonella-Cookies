@@ -29,6 +29,7 @@ function CookieShop(name, minCustomers, maxCustomers, avgCookie, hours, array) {
 //---------------Inizialization-------------------------------
 //Creates all locations with information
 var shops = [
+  //Ghost Shop to push the array to start at 1
   new CookieShop('', 0, 0, 0, [], []),
   new CookieShop('firstAndPike', 23, 65, 6.3, hours, []),
   new CookieShop('seaTacAirport', 3, 24, 1.2, hours, []),
@@ -37,6 +38,7 @@ var shops = [
   new CookieShop('aiki', 2, 16, 4.6, hours, []),
 ];
 
+// Test to check shops
 // console.log(shops);
 
 
@@ -193,46 +195,46 @@ CookieShop.prototype.render = function() {
 // Calculates the totals for each column
 function footerTotal() {
   var totalFill = hourlyTotals;
-  console.log(`array is: ${totalFill}`);
+  // console.log(`array is: ${totalFill}`);
   var title = 'Hourly Totals';
   var massTotal = 0;
   var tableFooter = document.getElementById('table-foot');
   var tableFooterEl = document.createElement('tr');
   var tableTitle = document.createElement('td');
-  console.log('row created');
+  // console.log('row created');
   var tableFooterFinalCell = document.createElement('td');
-  console.log('Final cell created');
+  // console.log('Final cell created');
 
 
   tableFooter.appendChild(tableFooterEl);
   tableFooterEl.appendChild(tableTitle);
   tableTitle.textContent = title;
-  console.log(tableTitle.textContent);
-  console.log(`The row is: ${title}`);
+  // console.log(tableTitle.textContent);
+  // console.log(`The row is: ${title}`);
 
 
   for (var i = 0; i < hours.length; i++) {
     var tf = document.createElement('td');
-    console.log(`fill is this: ${totalFill[i]}`);
+    // console.log(`fill is this: ${totalFill[i]}`);
     tf.textContent = totalFill[i];
-    console.log(`fill inserted: ${totalFill[i]}`);
+    // console.log(`fill inserted: ${totalFill[i]}`);
 
 
     massTotal = massTotal + totalFill[i];
-    console.log(`total calculated to be ${massTotal}`);
+    // console.log(`total calculated to be ${massTotal}`);
 
 
     hourlyTotals[i] = hourlyTotals[i] + totalFill[i];
-    console.log(`Total for ${hours[i]}: is ${hourlyTotals[i]}`);
+    // console.log(`Total for ${hours[i]}: is ${hourlyTotals[i]}`);
     tableFooterEl.appendChild(tf);
-    console.log(`child created`);
+    // console.log(`child created`);
   }
 
-  console.log(`final total: ${massTotal}`);
+  // console.log(`final total: ${massTotal}`);
 
   tableFooterEl.appendChild(tableFooterFinalCell);
   tableFooterFinalCell.textContent = massTotal;
-  console.log(`total: ${massTotal}`);
+  // console.log(`total: ${massTotal}`);
 };
 
 
@@ -248,7 +250,7 @@ function finalRender() {
   var tableBody = document.getElementById('table-body');
   tableBody.textContent = '';
   hourlyTotals = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-  console.log('total reset');
+  // console.log('total reset');
 
   for (var i = 1; i < shops.length; i++) {
     shops[i].render();
@@ -259,9 +261,9 @@ function finalRender() {
 };
 
 // Tests for final render
-console.log(tableHeadCreator());
+// console.log(tableHeadCreator());
 // console.log(aiki.render());
-console.log(finalRender());
+// console.log(finalRender());
 // console.log(footerTotal());
 
 //This constructs the table header
@@ -286,86 +288,8 @@ function tableHeadCreator() {
   // console.log(' final element inserted');
   finalElement.textContent = 'Daily Totals';
 
-  // for (var i = 0; shops.length; i++) {
-  //   console.log('Stores beginging to render');
-  //   shops[i].render();
-  //   console.log(shops[i].finalRender());
-  }
-  // footerTotal();
-// };
-
-// Tests for final render
-// console.log(tableHeadCreator());
-// console.log(aiki.render());
-// console.log(CookieShop.finalRender);
-// console.log(footerTotal());
-
-
-// // Tests for final render
-// console.log(tableHeadCreator());
-// // console.log(aiki.render());
-// console.log(CookieShop.finalRender);
-// console.log(footerTotal());
-
-
-
-// function tableBodyCreator() {
-//   //Body variables
-//
-//   // //Footer variables
-//   // var msg = 'Daily Totals';
-//   // var tFoot = document.getElementById('table-foot');
-//   // var tFootRow = document.createElement('tr');
-//   // var totalsRow = document.createElement('td');
-//   // tFoot.appendChild(tFootRow);
-//   // tFootRow.appendChild(totalsRow);
-//   // totalsRow.textContent = msg;
-// +
-//   //Body part of the function
-//   //   //Footer part of the Function
-//   //   for (var i = 0; i < hours.length; i++) {
-//   //     var tf = document.createElement('td');
-//   //     // tf.textContent = ;
-//   //     tableHeadEl.appendChild(th);
-//   //   }
-//   //
-//   //   th = document.createElement('th');
-//   //   tableHead.appendChild(th);
-//   // };
-//   //
-//   // function tableFootCreator() {
-//   //
-//   //
-// };
-//
-// // -------------------------------------------------------------------
-//
-//
-//
+}
 // // ______________________EXECUTABLE___________________________________________
 
-// console.log(tableHeadCreator());
-// console.log(aiki.render());
-// console.log(CookieShop.finalRender);
-// console.log(footerTotals);
-
-
-
-// Test for final Output list
-// // console.log(aiki.finalOutput(aiki));
-// // firstAndPike.finalOutput(firstAndPike);
-// // seaTacAirport.finalOutput(seaTacAirport);
-// // seattleCenter.finalOutput(seattleCenter);
-// // capitolHill.finalOutput(capitolHill);
-// // aiki.finalOutput(aiki);
-//
-// // console.log(finalOutput(firstAndPike));
-//
-// // console.log(sum(firstAndPike));
-//
-// // console.log(cookieArrayCreator(firstAndPike));
-//
-// // console.log(cookieperHour(firstAndPike));
-// // console.log(firstAndPike.randomNum(minimum, maximum));
-//
-// // console.log(firstAndPike.randomNum());
+tableHeadCreator();
+finalRender();
