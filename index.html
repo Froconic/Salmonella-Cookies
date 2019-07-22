@@ -9,39 +9,90 @@
 
   </head>
   <body>
-    <p>I am here</p>
-<form>
+    <nav>
+      <div class="logo-shell">
+        <img src="img/salmon.png" alt="logo">
+      </div>
+      <a href="index.html">Home</a>
+      <a href="sales.html">Sales</a>
+      <a href="#merch">Merch</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <section class="hero-section">
+        <header>
+          <h1>Welcome to Salmonella Cookies!</h1>
+          <img src="img/salmon.png" alt="logo">
+          <a href="sales.html"><button type="button" name="button">Sales list</button></a>
+        </header>
+    </section>
+    <section class="merch-section" id="merch">
+      <header>
+        <h2>Check out our merch!</h2>
+        <div class="product-shell">
+          <img src="img/frosted-cookie.jpg" alt="Frosted cookie">
+          <p>This is our famous Salmon Cookie</p>
+        </div>
+        <div class="product-shell">
+          <img src="img/cutter.jpeg" alt="">
+          <p>Buy our cookie cutters!</p>
+        </div>
+        <div class="product-shell">
+          <img src="img/shirt.jpg" alt="">
+          <p>Our wonderful shirt to show support for the fishies!</p>
+        </div>
+      </header>
+    </section>
+    <section class="about-section" id="about">
+      <h2>How to find us!</h2>
+      <div class="info-shell">
+        <h3>Locations</h3>
+        <ul class="location-list">
+          <li>First & Pike</li>
+          <ul class="loction-info">
+            <li>Located: 352 3rd St. Hartsville, SC 29550</li>
+            <li>Hours: 6h-20h</li>
+            <li>Phone: (770) 743-8198</li>
+          </ul>
+          <li>Sea Tac Airiport</li>
+          <ul class="loction-info">
+            <li>Located: 725 Hillcrest St. North Augusta, SC 29841</li>
+            <li>Hours: 6h-20h</li>
+            <li>Phone: (770) 706-4794</li>
+          </ul>
+          <li>Seattle Center</li>
+          <ul class="loction-info">
+            <li>Located: 623 Lilac Drive Moncks Corner, SC 29461</li>
+            <li>Hours: 6h-20h</li>
+            <li>Phone: (770) 328-0770</li>
+          </ul>
+          <li>Capitol Hill</li>
+          <ul class="loction-info">
+            <li>Located: 257 Lakeshore Ave. Irmo, SC 29063</li>
+            <li>Hours: 6h-20h</li>
+            <li>Phone: (770) 500-7873</li>
+          </ul>
+          <li>Aiki</li>
+          <ul class="loction-info">
+            <li>Located: 3 Nut Swamp Street Minneapolis, MN 55406</li>
+            <li>Hours: 6h-20h</li>
+            <li>Phone: (770) 943-0116</li>
+          </ul>
+        </ul>
+      </div>
+    </section>
+    <section class='contact-section' id="contact">
+  <form class="contact-form" action="index.html" method="post">
   <fieldset>
-    <label for="Name of Location">Name of Location</label>
-    <input type="text" id="location-name" name="location-name">
-    <label for="Minimum # of Customers">Minimum # of Customers</label>
-    <input type="number" id="minimum-customers" name="minimum-customers" min="0">
-    <label for="Maximum # of Customers">Maximum # of Customers</label>
-    <input type="number" id="maximum-customers" name="maximum-customers" min="0">
-    <label for="Average Sales of Location">Average Sales of Location</label>
-    <input type="number" id="average-sales" name="average-sales" min="0" step=".1">
+    <label for="First Name"><input type="text" placeholder ="First Name" ></label>
+    <label for="Email"><input type="email" placeholder="Email" ></label>
+    <label for="Message"><input type="text" placeholder="Message" ></label>
+    <input type="submit" name="Send">
 
-    <button type="reset" value="reset">Cancel</button>
-    <input type="submit" value="New Shop">
+
   </fieldset>
-
 </form>
-
-<table id="salesData">
-  <thead>
-    <tr id="table-head">
-
-    </tr>
-
-  </thead>
-  <tbody id="table-body">
-
-  </tbody>
-  <tfoot id="table-foot">
-
-  </tfoot>
-
-</table>
+    </section>
 
 
 <script type="text/javascript" src= "js/app-constructor.js"></script>
