@@ -5,6 +5,8 @@
 var hours = ['6:00', '7:00', '8:00', '9:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00'];
 var cookieArray = [];
 var hourlyTotals = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+;
+
 
 
 //Constructor Function for the cookie shops
@@ -18,23 +20,23 @@ function CookieShop(name, minCustomers, maxCustomers, avgCookie, hours, array) {
 
   // this.cookiesPerHour();
   // This adds the new store to the list of locations
-  CookieShop.all.push(this);
-
 
   // this.randomNum = randomNum;
 }
-
 // Create an empty array in order to store all of the locations
 
-CookieShop.all = [];
 
 //---------------Inizialization-------------------------------
 //Creates all locations with information
-var firstAndPike = new CookieShop('firstAndPike', 23, 65, 6.3, hours, []);
-var seaTacAirport = new CookieShop('seaTacAirport', 3, 24, 1.2, hours, []);
-var seattleCenter = new CookieShop('seattleCenter', 11, 38, 3.7, hours, []);
-var capitolHill = new CookieShop('capitolHill', 20, 38, 2.3, hours, []);
-var aiki = new CookieShop('aiki', 2, 16, 4.6, hours, []);
+var shops = [
+  new CookieShop('firstAndPike', 23, 65, 6.3, hours, []),
+  new CookieShop('seaTacAirport', 3, 24, 1.2, hours, []),
+  new CookieShop('seattleCenter', 11, 38, 3.7, hours, []),
+  new CookieShop('capitolHill', 20, 38, 2.3, hours, []),
+  new CookieShop('aiki', 2, 16, 4.6, hours, []),
+];
+
+console.log(shops);
 
 
 //Tests to check that the properties return correctly
@@ -178,8 +180,17 @@ CookieShop.prototype.render = function() {
   tBodyEl.appendChild(tFinalEl);
   tFinalEl.textContent = total;
   // console.log(`total: ${total}`);
-  //---------------------------Footer part of the function-----------------------
-  // Footer function variables
+};
+// Test for the render function
+
+// console.log(tableHeadCreator());
+// console.log(aiki.render());
+// console.log(seaTacAirport.render());
+// console.log(tableBodyCreator(seaTacAirport));
+
+
+// Calculates the totals for each column
+function footerTotal() {
   var totalFill = hourlyTotals;
   console.log(`array is: ${totalFill}`);
   var title = 'Hourly Totals';
@@ -212,40 +223,45 @@ CookieShop.prototype.render = function() {
 
     hourlyTotals[i] = hourlyTotals[i] + totalFill[i];
     console.log(`Total for ${hours[i]}: is ${hourlyTotals[i]}`);
-    tableFooterEl.appendChild(tb);
+    tableFooterEl.appendChild(tf);
     console.log(`child created`);
   }
 
-  console.log(`final total: ${total}`);
+  console.log(`final total: ${massTotal}`);
 
   tableFooterEl.appendChild(tableFooterFinalCell);
   tableFooterFinalCell.textContent = massTotal;
   console.log(`total: ${massTotal}`);
 };
 
-function footerTotals() {
-  var total = 0;
-  
-}
 
-// Test for the render function
 
+//Tests for the footerTotals
 // console.log(tableHeadCreator());
 // console.log(aiki.render());
-// console.log(seaTacAirport.render());
-// console.log(tableBodyCreator(seaTacAirport));
+// console.log(CookieShop.finalRender);
+// console.log(footerTotal());
 
-CookieShop.prototype.finalRender = function () {
+
+CookieShop.prototype.finalRender = function() {
   var tableBody = document.getElementbyId('table-body');
   tableBody.textContent(tableBody);
   hourlyTotals = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
   console.log('total reset');
 
-  for(var i = 0; i < CookieShop.all.length; i++) {
+  for (var i = 0; i < CookieShop.length; i++) {
     CookieShop.all[i].render();
     console.log(`Curren location: ${CookieShop.all[i].name}`);
   };
+
+  footerTotal();
 };
+
+// Tests for final render
+console.log(tableHeadCreator());
+// console.log(aiki.render());
+console.log(CookieShop.finalRender);
+console.log(footerTotal());
 
 //This constructs the table header
 function tableHeadCreator() {
@@ -268,7 +284,14 @@ function tableHeadCreator() {
   tableHead.appendChild(finalElement);
   // console.log(' final element inserted');
   finalElement.textContent = 'Daily Totals';
+
 };
+
+// Tests for final render
+console.log(tableHeadCreator());
+// console.log(aiki.render());
+console.log(CookieShop.finalRender);
+console.log(footerTotal());
 
 
 
@@ -307,7 +330,10 @@ function tableHeadCreator() {
 //
 // // ______________________EXECUTABLE___________________________________________
 
-console.log(CookieShop.renderTotals)
+// console.log(tableHeadCreator());
+// console.log(aiki.render());
+// console.log(CookieShop.finalRender);
+// console.log(footerTotals);
 
 
 
