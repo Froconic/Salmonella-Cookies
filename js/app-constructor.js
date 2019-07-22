@@ -29,6 +29,7 @@ function CookieShop(name, minCustomers, maxCustomers, avgCookie, hours, array) {
 //---------------Inizialization-------------------------------
 //Creates all locations with information
 var shops = [
+  new CookieShop('', 0, 0, 0, [], []),
   new CookieShop('firstAndPike', 23, 65, 6.3, hours, []),
   new CookieShop('seaTacAirport', 3, 24, 1.2, hours, []),
   new CookieShop('seattleCenter', 11, 38, 3.7, hours, []),
@@ -36,7 +37,7 @@ var shops = [
   new CookieShop('aiki', 2, 16, 4.6, hours, []),
 ];
 
-console.log(shops);
+// console.log(shops);
 
 
 //Tests to check that the properties return correctly
@@ -243,15 +244,15 @@ function footerTotal() {
 // console.log(footerTotal());
 
 
-CookieShop.prototype.finalRender = function() {
-  var tableBody = document.getElementbyId('table-body');
-  tableBody.textContent(tableBody);
+function finalRender() {
+  var tableBody = document.getElementById('table-body');
+  tableBody.textContent = '';
   hourlyTotals = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
   console.log('total reset');
 
-  for (var i = 0; i < CookieShop.length; i++) {
-    CookieShop.all[i].render();
-    console.log(`Curren location: ${CookieShop.all[i].name}`);
+  for (var i = 1; i < shops.length; i++) {
+    shops[i].render();
+    // console.log(`Curren location: ${CookieShop.all[i].name}`);
   };
 
   footerTotal();
@@ -260,8 +261,8 @@ CookieShop.prototype.finalRender = function() {
 // Tests for final render
 console.log(tableHeadCreator());
 // console.log(aiki.render());
-console.log(CookieShop.finalRender);
-console.log(footerTotal());
+console.log(finalRender());
+// console.log(footerTotal());
 
 //This constructs the table header
 function tableHeadCreator() {
@@ -285,13 +286,26 @@ function tableHeadCreator() {
   // console.log(' final element inserted');
   finalElement.textContent = 'Daily Totals';
 
-};
+  // for (var i = 0; shops.length; i++) {
+  //   console.log('Stores beginging to render');
+  //   shops[i].render();
+  //   console.log(shops[i].finalRender());
+  }
+  // footerTotal();
+// };
 
 // Tests for final render
-console.log(tableHeadCreator());
+// console.log(tableHeadCreator());
 // console.log(aiki.render());
-console.log(CookieShop.finalRender);
-console.log(footerTotal());
+// console.log(CookieShop.finalRender);
+// console.log(footerTotal());
+
+
+// // Tests for final render
+// console.log(tableHeadCreator());
+// // console.log(aiki.render());
+// console.log(CookieShop.finalRender);
+// console.log(footerTotal());
 
 
 
