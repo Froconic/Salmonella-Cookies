@@ -5,7 +5,7 @@
 var hours = ['6:00', '7:00', '8:00', '9:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00'];
 var cookieArray = [];
 var hourlyTotals = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-;
+var form = document.querySelector('form');
 
 
 
@@ -237,6 +237,11 @@ function footerTotal() {
   // console.log(`total: ${massTotal}`);
 };
 
+function footerClear() {
+  var footerRow = document.getElementById("table-footer");
+  footerLocation.innerHTML = '';
+}
+
 
 
 //Tests for the footerTotals
@@ -289,7 +294,27 @@ function tableHeadCreator() {
   finalElement.textContent = 'Daily Totals';
 
 }
+
+// name, minCustomers, maxCustomers, avgCookie, hours, array
+function inputData() {
+  event.preventDefault();
+
+  var locationName = event.target.name.value;
+  var minimumCustomers = Number(event.target.minCustomers.value);
+  var maximumCustomers = Number(event.target.maxCustomers.value);
+  var averageSales = parseFloat(event.target.avgCookies.value);
+  console.log('data collected');
+
+  var newShop = new CookieShop(locationName, maximumCustomers, minimumCustomers, averageSales);
+  console.log('data input');
+
+footerClear();
+
+}
 // // ______________________EXECUTABLE___________________________________________
 
+
+
+form.addEventListener('submit', inputData);
 tableHeadCreator();
 finalRender();

@@ -10,6 +10,23 @@
   </head>
   <body>
     <p>I am here</p>
+<form>
+  <fieldset>
+    <label for="Name of Location">Name of Location</label>
+    <input type="text" id="location-name" name="location-name">
+    <label for="Minimum # of Customers">Minimum # of Customers</label>
+    <input type="number" id="minimum-customers" name="minimum-customers" min="0">
+    <label for="Maximum # of Customers">Maximum # of Customers</label>
+    <input type="number" id="maximum-customers" name="maximum-customers" min="0">
+    <label for="Average Sales of Location">Average Sales of Location</label>
+    <input type="number" id="average-sales" name="average-sales" min="0" step=".1">
+
+    <button type="reset" value="reset">Cancel</button>
+    <input type="submit" value="New Shop">
+  </fieldset>
+
+</form>
+
 <table id="salesData">
   <thead>
     <tr id="table-head">
@@ -25,6 +42,7 @@
   </tfoot>
 
 </table>
+
 
 <script type="text/javascript" src= "js/app-constructor.js"></script>
   </body>
