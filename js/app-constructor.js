@@ -299,9 +299,13 @@ function inputData() {
   event.preventDefault();
 
   var locationName = event.target.name.value;
+  console.log(locationName);
   var minimumCustomers = event.target.minCustomers.value;
+  console.log(minimumCustomers);
   var maximumCustomers = event.target.maxCustomers.value;
+  console.log(maximumCustomers);
   var averageSales = event.target.avgCookies.value;
+  console.log(averageSales);
   console.log('data collected');
 
   var newShop = new CookieShop(locationName, maximumCustomers, minimumCustomers, averageSales);
@@ -312,7 +316,7 @@ finalrender();
 }
 // // ______________________EXECUTABLE___________________________________________
 
-
+var document = document;
 var form = document.querySelector('form');
 form.addEventListener('submit', inputData);
 tableHeadCreator();
