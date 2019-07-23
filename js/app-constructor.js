@@ -321,8 +321,8 @@ function inputData(event) {
   shops.push(newShop);
   console.log(newShop);
 
-footerClear();
-finalRender();
+  footerClear();
+  finalRender();
 }
 // // ______________________EXECUTABLE___________________________________________
 
