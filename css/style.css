@@ -157,7 +157,7 @@ button {
     margin-top: 70px;
     padding: 15px;
     position: relative;
-    height: 70vh;
+    height: 100vh;
 }
 
 .form-shell {
@@ -169,12 +169,18 @@ button {
     text-align: center;
 }
 
-table {
+table#salesData {
     border-collapse: collapse;
     border-spacing: 0;
     position: absolute;
     bottom: 0;
     left: 6%;
+    border: solid;
+    text-align: center;
+}
+
+thead {
+    border: solid;
 }
 
 tr {
@@ -182,8 +188,13 @@ tr {
 }
 
 th {
+    border: solid;
     padding: 10px;
-    border-right: solid;
+}
+
+td {
+    border: solid;
+    padding: 10px;
 }
 
 tbody {

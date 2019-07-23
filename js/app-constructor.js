@@ -30,11 +30,11 @@ function CookieShop(name, minCustomers, maxCustomers, avgCookie, hours, array) {
 var shops = [
   //Ghost Shop to push the array to start at 1
   new CookieShop('', 0, 0, 0, [], []),
-  new CookieShop('firstAndPike', 23, 65, 6.3, hours, []),
-  new CookieShop('seaTacAirport', 3, 24, 1.2, hours, []),
-  new CookieShop('seattleCenter', 11, 38, 3.7, hours, []),
-  new CookieShop('capitolHill', 20, 38, 2.3, hours, []),
-  new CookieShop('aiki', 2, 16, 4.6, hours, []),
+  new CookieShop('First and Pike', 23, 65, 6.3, hours, []),
+  new CookieShop('Sea Tac Airport', 3, 24, 1.2, hours, []),
+  new CookieShop('Seattle Center', 11, 38, 3.7, hours, []),
+  new CookieShop('Capitol Hill', 20, 38, 2.3, hours, []),
+  new CookieShop('Aiki', 2, 16, 4.6, hours, []),
 ];
 
 // Test to check shops
@@ -148,6 +148,7 @@ CookieShop.prototype.render = function() {
   var total = 0;
   var tBody = document.getElementById('table-body');
   var tBodyEl = document.createElement('tr');
+  var blankCell = document.createElement('td');
   var tLocation = document.createElement('td');
   // console.log('row created');
   var tFinalEl = document.createElement('td');
@@ -155,6 +156,7 @@ CookieShop.prototype.render = function() {
 
 
   tBody.appendChild(tBodyEl);
+  // tBodyEl.appendChild(blankCell);
   tBodyEl.appendChild(tLocation);
   tLocation.textContent = location;
   // console.log(tLocation.textContent);
@@ -274,12 +276,17 @@ function finalRender() {
 function tableHeadCreator() {
   var tableHead = document.getElementById('table-head');
   var blankElement = document.createElement('th');
+  var blankElement2 = document.createElement('th');
+
   // console.log('element created');
   var finalElement = document.createElement('th');
   // console.log(' final element created');
-  tableHead.appendChild(blankElement);
+
   // console.log('element inserted');
   tableHead.textContent = '';
+  blankElement2.textContent = 'Location'
+  // tableHead.appendChild(blankElement);
+  tableHead.appendChild(blankElement2);
 
   for (var i = 0; i < hours.length; i++) {
     // console.log('I am running');
