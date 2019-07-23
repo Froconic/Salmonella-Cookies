@@ -1,56 +1,69 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>Salmon Cookies</title>
 
-    <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/css/reset.css">
+<head>
+  <meta charset="utf-8">
+  <title>Salmon Cookies</title>
 
-  </head>
-  <body>
-    <nav>
-      <div class="logo-shell">
-        <img src="img/salmon.png" alt="logo">
-      </div>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/reset.css">
+
+</head>
+
+<body>
+  <nav>
+    <div class="logo-shell">
+      <img class="logo" src="img/salmon.png" alt="logo">
+      <h2 class='logo-header'>Salmonella Cookies</h2>
+    </div>
+    <div class="link-shell">
       <a href="index.html">Home</a>
       <a href="sales.html">Sales</a>
       <a href="#merch">Merch</a>
       <a href="#about">About</a>
       <a href="#contact">Contact</a>
-    </nav>
-<form class="new-shop" action="index.html" method="post">
-  <fieldset>
+    </div>
+
+  </nav>
+  <section class="data">
     <h2>Create a New Location Below!</h2>
-    <input type="text" id="locationName" name="locationName" placeholder="location-name" >
-    <input type="number" id="minimumCustomers" name="minimumCustomers" placeholder="minimum-customers" min="0">
-    <input type="number" id="maximumCustomers" name="maximumCustomers" placeholder="maximum-customers" min="0">
-    <input type="number" id="averageSales" name="averageSales" placeholder="average-sales" min="0" step=".1">
+    <div class="form-shell">
+      <form class="new-shop" action="index.html" method="post">
+        <fieldset class="sales-fieldset">
+          <input type="text" id="locationName" name="locationName" placeholder="location-name">
+          <input type="number" id="minimumCustomers" name="minimumCustomers" placeholder="minimum-customers" min="0">
+          <input type="number" id="maximumCustomers" name="maximumCustomers" placeholder="maximum-customers" min="0">
+          <input type="number" id="averageSales" name="averageSales" placeholder="average-sales" min="0" step=".1">
+          <input type="submit" value="New Shop">
+          <button type="reset" value="reset">Cancel</button>
+        </fieldset>
+      </form>
+    </div>
+    <div class="table-shell">
+      <table id="salesData">
+        <thead>
+          <tr id="table-head">
+
+          </tr>
+
+        </thead>
+        <tbody id="table-body">
+
+        </tbody>
+        <tfoot id="table-foot">
+
+        </tfoot>
+
+      </table>
+
+    </div>
+  </section>
 
 
-    <input type="submit" value="New Shop">
-    <button type="reset" value="reset">Cancel</button>
-  </fieldset>
 
-</form>
+  <script type="text/javascript" src="js/app-constructor.js"></script>
 
-<table id="salesData">
-  <thead>
-    <tr id="table-head">
+  </script>
+</body>
 
-    </tr>
-
-  </thead>
-  <tbody id="table-body">
-
-  </tbody>
-  <tfoot id="table-foot">
-
-  </tfoot>
-
-</table>
-
-
-<script type="text/javascript" src= "js/app-constructor.js"></script>
-  </body>
 </html>
