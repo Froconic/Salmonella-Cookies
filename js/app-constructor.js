@@ -5,7 +5,6 @@
 var hours = ['6:00', '7:00', '8:00', '9:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00'];
 var cookieArray = [];
 var hourlyTotals = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-var form = document.querySelector('form');
 
 
 
@@ -31,11 +30,11 @@ function CookieShop(name, minCustomers, maxCustomers, avgCookie, hours, array) {
 var shops = [
   //Ghost Shop to push the array to start at 1
   new CookieShop('', 0, 0, 0, [], []),
-  new CookieShop('firstAndPike', 23, 65, 6.3, hours, []),
-  new CookieShop('seaTacAirport', 3, 24, 1.2, hours, []),
-  new CookieShop('seattleCenter', 11, 38, 3.7, hours, []),
-  new CookieShop('capitolHill', 20, 38, 2.3, hours, []),
-  new CookieShop('aiki', 2, 16, 4.6, hours, []),
+  new CookieShop('First and Pike', 23, 65, 6.3, hours, []),
+  new CookieShop('Sea Tac Airport', 3, 24, 1.2, hours, []),
+  new CookieShop('Seattle Center', 11, 38, 3.7, hours, []),
+  new CookieShop('Capitol Hill', 20, 38, 2.3, hours, []),
+  new CookieShop('Aiki', 2, 16, 4.6, hours, []),
 ];
 
 // Test to check shops
@@ -86,7 +85,7 @@ CookieShop.prototype.cookiesPerHour = function() {
 
 //Creates the cookie array
 CookieShop.prototype.cookieArrayCreator = function() {
-  for (var i = 0; i < this.hours.length; i++) {
+  for (var i = 0; i < hours.length; i++) {
     var amount = this.cookiesPerHour();
     // console.log(amount);
     var cookieSum = 0;
@@ -149,6 +148,7 @@ CookieShop.prototype.render = function() {
   var total = 0;
   var tBody = document.getElementById('table-body');
   var tBodyEl = document.createElement('tr');
+  var blankCell = document.createElement('td');
   var tLocation = document.createElement('td');
   // console.log('row created');
   var tFinalEl = document.createElement('td');
@@ -156,6 +156,7 @@ CookieShop.prototype.render = function() {
 
 
   tBody.appendChild(tBodyEl);
+  // tBodyEl.appendChild(blankCell);
   tBodyEl.appendChild(tLocation);
   tLocation.textContent = location;
   // console.log(tLocation.textContent);
@@ -238,8 +239,8 @@ function footerTotal() {
 };
 
 function footerClear() {
-  var footerRow = document.getElementById("table-footer");
-  footerLocation.innerHTML = '';
+  var footerRow = document.getElementById("table-foot");
+  footerRow.innerHTML = '';
 }
 
 
@@ -275,12 +276,17 @@ function finalRender() {
 function tableHeadCreator() {
   var tableHead = document.getElementById('table-head');
   var blankElement = document.createElement('th');
+  var blankElement2 = document.createElement('th');
+
   // console.log('element created');
   var finalElement = document.createElement('th');
   // console.log(' final element created');
-  tableHead.appendChild(blankElement);
+
   // console.log('element inserted');
   tableHead.textContent = '';
+  blankElement2.textContent = 'Location'
+  // tableHead.appendChild(blankElement);
+  tableHead.appendChild(blankElement2);
 
   for (var i = 0; i < hours.length; i++) {
     // console.log('I am running');
@@ -296,25 +302,32 @@ function tableHeadCreator() {
 }
 
 // name, minCustomers, maxCustomers, avgCookie, hours, array
-function inputData() {
+function inputData(event) {
   event.preventDefault();
 
-  var locationName = event.target.name.value;
-  var minimumCustomers = Number(event.target.minCustomers.value);
-  var maximumCustomers = Number(event.target.maxCustomers.value);
-  var averageSales = parseFloat(event.target.avgCookies.value);
+  var locationName = event.target.locationName.value;
+  console.log(locationName);
+  var minimumCustomers = event.target.minimumCustomers.value;
+  console.log(minimumCustomers);
+  var maximumCustomers = event.target.maximumCustomers.value;
+  console.log(maximumCustomers);
+  var averageSales = event.target.averageSales.value;
+  console.log(averageSales);
   console.log('data collected');
 
   var newShop = new CookieShop(locationName, maximumCustomers, minimumCustomers, averageSales);
   console.log('data input');
 
-footerClear();
+  shops.push(newShop);
+  console.log(newShop);
 
+  footerClear();
+  finalRender();
 }
 // // ______________________EXECUTABLE___________________________________________
 
-
-
+var document = document;
+var form = document.querySelector('form');
 form.addEventListener('submit', inputData);
 tableHeadCreator();
 finalRender();

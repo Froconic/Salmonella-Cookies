@@ -1,49 +1,71 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>Salmon Cookies</title>
 
-    <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/css/reset.css">
+<head>
+  <meta charset="utf-8">
+  <title>Salmon Cookies</title>
 
-  </head>
-  <body>
-    <p>I am here</p>
-<form>
-  <fieldset>
-    <label for="Name of Location">Name of Location</label>
-    <input type="text" id="location-name" name="location-name">
-    <label for="Minimum # of Customers">Minimum # of Customers</label>
-    <input type="number" id="minimum-customers" name="minimum-customers" min="0">
-    <label for="Maximum # of Customers">Maximum # of Customers</label>
-    <input type="number" id="maximum-customers" name="maximum-customers" min="0">
-    <label for="Average Sales of Location">Average Sales of Location</label>
-    <input type="number" id="average-sales" name="average-sales" min="0" step=".1">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/reset.css">
 
-    <button type="reset" value="reset">Cancel</button>
-    <input type="submit" value="New Shop">
-  </fieldset>
+</head>
 
-</form>
+<body>
+  <nav>
+    <div class="logo-shell">
+      <img class="logo" src="img/salmon.png" alt="logo">
+      <h2 class='logo-header'>Salmonella Cookies</h2>
+    </div>
+    <div class="link-shell">
+      <a href="index.html">Home</a>
+      <a href="sales.html">Sales</a>
+      <a href="#merch">Merch</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </div>
 
-<table id="salesData">
-  <thead>
-    <tr id="table-head">
+  </nav>
+  <section class="data">
+    <div class="form-shell">
+      <h2 class="form-header">Add a new location!</h2>
+      <form class="new-shop" action="index.html" method="post">
+        <fieldset class="sales-fieldset">
+          <input type="text" id="locationName" name="locationName" placeholder="location-name">
+          <input type="number" id="minimumCustomers" name="minimumCustomers" placeholder="minimum-customers" min="0">
+          <input type="number" id="maximumCustomers" name="maximumCustomers" placeholder="maximum-customers" min="0">
+          <input type="number" id="averageSales" name="averageSales" placeholder="average-sales" min="0" step=".1">
+          <input class="new-shop" type="submit" value="New Shop">
+          <input type="reset"  value="Reset">
+          <!-- <button class='cancel' type="reset" value="reset">Cancel</button> -->
+        </fieldset>
+      </form>
+    </div>
+    <div class="table-shell">
+      <table id="salesData">
+        <h2 class="table-header">Here are all the sales for yesterday!</h2>
+        <thead>
+          <tr id="table-head">
 
-    </tr>
+          </tr>
 
-  </thead>
-  <tbody id="table-body">
+        </thead>
+        <tbody id="table-body">
 
-  </tbody>
-  <tfoot id="table-foot">
+        </tbody>
+        <tfoot id="table-foot">
 
-  </tfoot>
+        </tfoot>
 
-</table>
+      </table>
+
+    </div>
+  </section>
 
 
-<script type="text/javascript" src= "js/app-constructor.js"></script>
-  </body>
+
+  <script type="text/javascript" src="js/app-constructor.js"></script>
+
+  </script>
+</body>
+
 </html>
